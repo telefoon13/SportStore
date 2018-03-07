@@ -1,4 +1,5 @@
 ﻿using Sportstore.Domain.Abstract;
+using Sportstore.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Sportstore.WebUI.Controllers
     public class ProductController : Controller
     {
         private IProductRepository repository;
+        public int PageSize = 4;
 
         public ProductController(IProductRepository productRepository)
         {
@@ -17,9 +19,28 @@ namespace Sportstore.WebUI.Controllers
         }
 
         
-        public ActionResult List()
+        public ActionResult List(int page = 1)
         {
-            return View(repository.Products);
+            ProductsListViewModel model = new ProductsListViewModel
+            {
+                Products = repository.Products
+                .OrderBy(p => p.ProductID)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize),
+                PageInfo = new PageInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = repository.Products.Count()
+                }
+            };
+
+            return View(model);
+        }
+
+        public String Categ()
+        {
+            return "Categ";
         }
     }
 }
