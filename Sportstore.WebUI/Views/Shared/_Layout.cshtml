@@ -37,7 +37,14 @@
     </div>
 
     <div class="container body-content">
-        @RenderBody()
+        <div class="row panel">
+            <div id="categories" class="col-xs-2">
+                Put something useful here later
+            </div>
+            <div class="col-xs-8">
+                @RenderBody()
+            </div>
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - By Mike D. for Devocom</p>
