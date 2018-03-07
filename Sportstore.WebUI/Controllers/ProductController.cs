@@ -13,7 +13,7 @@ namespace Sportstore.WebUI.Controllers
 
         public ProductController(IProductRepository productRepository)
         {
-            this.repository = productRepository;
+            repository = productRepository;
         }
 
         
