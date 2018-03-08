@@ -13,7 +13,7 @@ namespace Sportstore.Domain.Concrete
     public class EmailSettings
     {
         public string MailToAddress = "mdh@devocom.be";
-        public string MailFromAddress = "sportstore@example.com";
+        public string MailFromAddress = "mdh@devocom.be";
         public bool UseSsl = false;
         public string Username = "";
         public string Password = "";
@@ -54,7 +54,7 @@ namespace Sportstore.Domain.Concrete
                 foreach (var line in cart.Lines)
                 {
                     var subtotal = line.Product.Price * line.Quantity;
-                    body.AppendFormat("{0} x {1} (subtotal: {2:c}", line.Quantity, line.Product.Name, subtotal);
+                    body.AppendFormat("{0} x {1} (subtotal: {2:c})<br>", line.Quantity, line.Product.Name, subtotal);
                 }
                 body.AppendFormat("Total order value: {0:c}", cart.ComputeTotalValue())
                 .AppendLine("---")
