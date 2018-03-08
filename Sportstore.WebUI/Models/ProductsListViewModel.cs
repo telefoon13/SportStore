@@ -10,5 +10,6 @@ namespace Sportstore.WebUI.Models
     {
         public IEnumerable<Product> Products { get; set; }
         public PageInfo PageInfo { get; set; }
+        public String CurrentCategory { get; set; }
     }
 }
